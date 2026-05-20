@@ -41,6 +41,34 @@
         <section id="productGallery" class="ad-gallery">
             <!-- Products will be injected here from localStorage by script.js -->
         </section>
+
+        <section id="contactSection" class="contact-section">
+            <h2>Contact Us</h2>
+            <p>Send us your details and message, and we will reply as soon as possible.</p>
+            <form name="contact" method="POST" action="/thank-you" data-netlify="true" data-netlify-honeypot="bot-field" class="contact-form">
+                <input type="hidden" name="form-name" value="contact">
+                <p class="hidden">
+                    <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+                </p>
+                <div class="form-group">
+                    <label for="contactName">Name</label>
+                    <input type="text" id="contactName" name="name" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" name="email" placeholder="name@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Phone</label>
+                    <input type="tel" id="contactPhone" name="phone" placeholder="01157064368" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" name="message" rows="5" placeholder="Write your message here" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </section>
     </main>
 
     <!-- Cart Menu -->
@@ -64,7 +92,7 @@
                 </div>
                 <div class="form-group">
                     <label for="customerEmail">Email:</label>
-                    <input type="email" id="customerEmail" name="customاناerEmail" required>
+                    <input type="email" id="customerEmail" name="customerEmail" required>
                 </div>
                 <div class="form-group">
                     <label for="customerPhone">Phone Number:</label>
