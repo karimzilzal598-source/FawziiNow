@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="admin-page-header">
+        <div class="brand">Company Ads Admin</div>
+        <div class="admin-header-actions">
+            <span id="currentAdminName" class="admin-current-name"></span>
+            <button class="btn btn-secondary" id="backHomeBtn">Return to Homepage</button>
+            <button class="btn btn-secondary" id="adminLogoutBtn">Logout</button>
+        </div>
+    </header>
+
+    <main class="main-content admin-main">
+        <section class="admin-panel">
+            <aside class="admin-sidebar">
+                <button class="btn glass-btn active" id="ordersTabBtn">Orders</button>
+                <button class="btn glass-btn" id="analyticsTabBtn">Analytics</button>
+                <button class="btn glass-btn" id="adminsTabBtn">Admins</button>
+                <button class="btn glass-btn" id="addProductTabBtn">Add Products</button>
+                <div class="admin-support">
+                    <p>Customer service:</p>
+                    <strong>01157064368</strong>
+                </div>
+            </aside>
+
+            <section class="admin-content">
+                <div id="authSection">
+                    <div id="adminRegisterPanel" class="admin-auth-panel hidden">
+                        <h2>Admin Registration</h2>
+                        <p>Create an admin account to receive and manage orders.</p>
+                        <form id="adminRegisterForm">
+                            <div class="form-group">
+                                <label for="adminRegisterName">Name:</label>
+                                <input type="text" id="adminRegisterName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="adminRegisterEmail">Email:</label>
+                                <input type="email" id="adminRegisterEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="adminRegisterPassword">Password:</label>
+                                <input type="password" id="adminRegisterPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="adminRegisterConfirm">Confirm Password:</label>
+                                <input type="password" id="adminRegisterConfirm" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Register Admin</button>
+                        </form>
+                    </div>
+
+                    <div id="adminLoginPanel" class="admin-auth-panel hidden">
+                        <h2>Admin Login</h2>
+                        <p>Sign in to view and manage incoming orders.</p>
+                        <form id="adminLoginForm">
+                            <div class="form-group">
+                                <label for="adminLoginEmail">Email:</label>
+                                <input type="email" id="adminLoginEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="adminLoginPassword">Password:</label>
+                                <input type="password" id="adminLoginPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="adminDashboardPanel" class="admin-dashboard hidden">
+                    <div class="admin-header">
+                        <div class="admin-title">
+                            <h2>Incoming Orders</h2>
+                            <p class="admin-notice">Click an order to view accept/reject actions.</p>
+                        </div>
+                    </div>
+                    <div id="adminOrderList" class="admin-order-list"></div>
+                    <div id="analyticsPanel" class="admin-analytics-panel hidden">
+                        <h3>Revenue & Insights</h3>
+                        <div id="analyticsSummary">
+                            <p><strong>Total Revenue (all):</strong> <span id="totalRevenue">$0.00</span></p>
+                            <p><strong>Total Revenue (accepted):</strong> <span id="acceptedRevenue">$0.00</span></p>
+                            <p><strong>Orders Count:</strong> <span id="ordersCount">0</span></p>
+                        </div>
+                        <div id="bestSelling">
+                            <h4>Best-selling Products</h4>
+                            <ul id="bestSellingList"></ul>
+                        </div>
+                        <div id="topVisitors">
+                            <h4>Top Visitors</h4>
+                            <ul id="topVisitorsList"></ul>
+                        </div>
+                        <div id="ordersTimeline">
+                            <h4>Order Placements (by day)</h4>
+                            <ul id="ordersTimelineList"></ul>
+                        </div>
+                    </div>
+                    <div id="adminAccountsPanel" class="admin-accounts-panel hidden">
+                        <h3>Manage Admin Accounts</h3>
+                        <p>View or remove admin accounts. You cannot remove the last remaining admin.</p>
+                        <div class="form-group">
+                            <h4>Add New Admin</h4>
+                            <form id="adminAddAdminForm">
+                                <div class="form-group">
+                                    <label for="newAdminName">Name:</label>
+                                    <input type="text" id="newAdminName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newAdminEmail">Email:</label>
+                                    <input type="email" id="newAdminEmail" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newAdminPassword">Password:</label>
+                                    <input type="password" id="newAdminPassword" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newAdminConfirm">Confirm Password:</label>
+                                    <input type="password" id="newAdminConfirm" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add Admin</button>
+                            </form>
+                        </div>
+                        <div id="adminListContainer">
+                            <ul id="adminList"></ul>
+                        </div>
+                    </div>
+                    <div id="adminAddProductPanel" class="admin-add-product-panel hidden">
+                        <h3>Add New Product</h3>
+                        <form id="adminAddProductForm">
+                            <div class="form-group">
+                                <label for="newProductName">Product Name:</label>
+                                <input type="text" id="newProductName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newProductPrice">Product Price:</label>
+                                <input type="number" id="newProductPrice" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newProductImage">Image URL:</label>
+                                <input type="url" id="newProductImage" placeholder="https://example.com/image.jpg" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newProductDescription">Description:</label>
+                                <input type="text" id="newProductDescription" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Product</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="admin.js"></script>
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Admin Edit Modal -->
+    <div id="adminEditModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeAdminEditModal">&times;</span>
+            <h2>Edit Admin</h2>
+            <form id="adminEditForm">
+                <div class="form-group">
+                    <label for="editAdminName">Name:</label>
+                    <input type="text" id="editAdminName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editAdminEmail">Email:</label>
+                    <input type="email" id="editAdminEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="editAdminPassword">Password (leave blank to keep):</label>
+                    <input type="password" id="editAdminPassword">
+                </div>
+                <div class="form-group">
+                    <label for="editAdminConfirm">Confirm Password:</label>
+                    <input type="password" id="editAdminConfirm">
+                </div>
+                <div style="display:flex;gap:.5rem;justify-content:flex-end">
+                    <button type="button" class="btn btn-secondary" id="cancelEditAdmin">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Advertisements</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Left side: First-time Registration -->
+            <div class="nav-left">
+                <button class="btn btn-register" id="registerBtn">Register</button>
+            </div>
+            
+            <!-- Center: Logo/Brand -->
+            <div class="nav-center">
+                <h1 class="brand">Company Ads</h1>
+            </div>
+            
+            <!-- Right side: Login/Register/Guest/Admin -->
+            <div class="nav-right">
+                <button class="btn btn-login" id="loginBtn">Login</button>
+                <button class="btn btn-register" id="registerBtn">Register</button>
+                <button class="btn btn-guest" id="guestBtn">Guest Login</button>
+                <button class="btn btn-admin" id="adminLoginBtn">Admin Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="hero-section">
+            <h2>Featured Advertisements</h2>
+            <p>Explore our latest product offerings</p>
+        </section>
+        
+        <!-- Advertisement Gallery (rendered from admin-added products) -->
+        <section id="productGallery" class="ad-gallery">
+            <!-- Products will be injected here from localStorage by script.js -->
+        </section>
+    </main>
+
+    <!-- Cart Menu -->
+    <div id="cartMenu" class="cart-menu hidden">
+        <span>🛒</span>
+        <span id="cartLabel">View Cart</span>
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-content">
+            <span class="close" id="closeCartModal">&times;</span>
+            <h2>Your Cart</h2>
+            <div id="cartItems" class="cart-items"></div>
+            <div class="checkout-details">
+                <h3>Customer Contact</h3>
+                <div class="form-group">
+                    <label for="customerName">Name:</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerEmail">Email:</label>
+                    <input type="email" id="customerEmail" name="customاناerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Phone Number:</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" required placeholder="01157064368">
+                </div>
+            </div>
+            <div class="cart-summary">
+                <div>Total:</div>
+                <div id="cartTotal">$0.00</div>
+            </div>
+            <div class="cart-actions">
+                <button class="btn btn-secondary" id="continueShoppingBtn">Continue Shopping</button>
+                <button class="btn btn-primary" id="placeOrderBtn">Place Order</button>
+            </div>
+            <p class="cart-note">When an order is placed, a request is sent to the admin interface.</p>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeLoginModal">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Guest Login Modal -->
+    <div id="guestModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeGuestModal">&times;</span>
+            <h2>Guest Login</h2>
+            <form id="guestForm">
+                <div class="form-group">
+                    <label for="guestName">Name:</label>
+                    <input type="text" id="guestName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="guestEmail">Email:</label>
+                    <input type="email" id="guestEmail" name="email" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Continue as Guest</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeRegisterModal">&times;</span>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Name:</label>
+                    <input type="text" id="registerName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email:</label>
+                    <input type="email" id="registerEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password:</label>
+                    <input type="password" id="registerPassword" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirm">Confirm Password:</label>
+                    <input type="password" id="registerConfirm" name="confirm" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <div id="toastContainer" class="toast-container"></div>
+</body>
+</html>
